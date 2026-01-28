@@ -16,8 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const frontendPath = path.join(__dirname, "../frontend/dist");
-app.use(express.static(frontendPath));
+// const frontendPath = path.join(__dirname, "../frontend/dist");
+// app.use(express.static(frontendPath));
 
 
 // ============================================
@@ -81,17 +81,17 @@ io.on("connection", (socket) => {
 // ============================================
 // CATCH-ALL ROUTE FOR FRONTEND (Must be LAST)
 // ============================================
-app.get("*", (req, res) => {
-  // Don't serve index.html for API routes
-  if (req.path.startsWith("/api")) {
-    return res.status(404).json({ 
-      success: false, 
-      message: "API endpoint not found",
-      path: req.path 
-    });
-  }
-  res.sendFile(path.resolve(frontendPath, "index.html"));
-});
+// app.get("*", (req, res) => {
+//   // Don't serve index.html for API routes
+//   if (req.path.startsWith("/api")) {
+//     return res.status(404).json({ 
+//       success: false, 
+//       message: "API endpoint not found",
+//       path: req.path 
+//     });
+//   }
+//   res.sendFile(path.resolve(frontendPath, "index.html"));
+// });
 
 // ============================================
 // START SERVER
